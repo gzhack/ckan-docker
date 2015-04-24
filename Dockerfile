@@ -5,6 +5,7 @@ MAINTAINER Open Knowledge
 RUN locale-gen en_US.UTF-8 && \
     echo 'LANG="en_US.UTF-8"' > /etc/default/locale
 
+COPY docker/ubuntu/sources.list /etc/apt/sources.list
 RUN apt-get -qq update
 
 # Install required packages

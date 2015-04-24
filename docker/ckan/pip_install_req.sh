@@ -11,9 +11,9 @@ do
       $CKAN_HOME/bin/pip install -e .
 
       if [ -f "requirements.txt" ]; then
-          $CKAN_HOME/bin/pip install -r requirements.txt
+          $CKAN_HOME/bin/pip install -r requirements.txt -i http://mirrors.aliyun.com/pypi/simple/
       elif [ -f "pip-requirements.txt" ]; then
-          $CKAN_HOME/bin/pip install -r pip-requirements.txt
+          $CKAN_HOME/bin/pip install -r pip-requirements.txt -i http://mirrors.aliyun.com/pypi/simple/
       fi
     fi
     cd ..

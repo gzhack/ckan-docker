@@ -5,6 +5,7 @@ MAINTAINER Open Knowledge
 RUN locale-gen en_US.UTF-8 && \
     echo 'LANG="en_US.UTF-8"' > /etc/default/locale
 
+COPY sources.list /etc/apt/sources.list
 RUN apt-get -qq update
 
 # Install Java
@@ -14,10 +15,10 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get -qq -y install \
 
 # Install Solr
 ENV SOLR_HOME /opt/solr/example/solr
-ENV SOLR_VERSION 4.10.1
+ENV SOLR_VERSION 4.10.2
 ENV SOLR solr-$SOLR_VERSION
 RUN mkdir -p /opt/solr
-RUN wget --progress=bar:force https://archive.apache.org/dist/lucene/solr/$SOLR_VERSION/$SOLR.tgz
+RUN wget --progress=bar:force http://mirrors.cnnic.cn/apache/lucene/solr/$SOLR_VERSION/$SOLR.tgz
 RUN tar zxf $SOLR.tgz -C /opt/solr --strip-components 1
 
 # Install CKAN Solr core
